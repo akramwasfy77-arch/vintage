@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body { background: #0F0F14; color: #F5F5F0; }
+body { font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
+::selection { background: #D9770655; }
+
+@layer components {
+  .card { @apply bg-surface border border-line rounded-2xl; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition active:scale-[.98]; }
+  .btn-primary { @apply btn bg-primary text-black hover:bg-primaryDark hover:text-white; }
+  .btn-ghost { @apply btn border border-line text-ink hover:border-primary; }
+  .btn-secondary { @apply btn bg-secondary text-white hover:opacity-90; }
+  .input { @apply w-full bg-surface2 border border-line rounded-xl px-4 py-3 text-[15px] outline-none focus:border-primary placeholder:text-muted/70; }
+  .label { @apply block text-sm text-muted mb-2; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full border border-line bg-surface2 px-3 py-1.5 text-xs; }
+  .container-p { @apply mx-auto w-full max-w-6xl px-4; }
+  .h1 { @apply text-2xl sm:text-3xl font-bold; }
+  .gold { @apply text-primary; }
+}
+.scroll-x { scrollbar-width: none; }
+.scroll-x::-webkit-scrollbar { display: none; }
