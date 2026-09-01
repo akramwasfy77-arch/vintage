@@ -4,7 +4,7 @@ export const SITE = {
   tagline: 'سوق التحف والمقتنيات النادرة في مصر',
   description:
     'Vintage سوق إلكتروني مصري متخصص في بيع وشراء التحف والأنتيك والمقتنيات النادرة: أنتيك فرنسي وعثماني ومصري، ساعات كلاسيكية، مجوهرات عتيقة، عملات وطوابع، أثاث لويس، سجاد شرقي، جراموفون وراديوهات قديمة. إعلانات موثّقة يراجعها فريق المنصة قبل النشر، وتواصل مباشر بين البائع والمشتري.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vintage-eg.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vintage-alpha.vercel.app',
   locale: 'ar_EG',
   email: 'akramwasfy77@gmail.com',
   phone: '01029397797',
