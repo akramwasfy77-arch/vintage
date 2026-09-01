@@ -1,5 +1,5 @@
 {
-  "name": "karakib-wa-tuhaf",
+  "name": "vintage",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -23,5 +23,6 @@
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3"
-  }
+  },
+  "description": "Vintage — سوق التحف والمقتنيات النادرة في مصر"
 }

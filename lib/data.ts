@@ -28,5 +28,5 @@ export const pkgById = (id: string) => PACKAGES.find((p) => p.id === id);
 export const egp = (n: number) => new Intl.NumberFormat('ar-EG', { maximumFractionDigits: 0 }).format(Number(n || 0)) + ' جنيه';
 export const waLink = (phone: string, title: string) => {
   const p = (phone || '').replace(/\D/g, '').replace(/^0/, '20');
-  return `https://wa.me/${p}?text=${encodeURIComponent(`مرحباً، مهتم بإعلان "${title}" على كراكيب وتحف`)}`;
+  return `https://wa.me/${p}?text=${encodeURIComponent(`مرحباً، مهتم بإعلان "${title}" على Vintage`)}`;
 };

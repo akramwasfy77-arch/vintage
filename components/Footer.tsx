@@ -1,26 +1,39 @@
 import Link from 'next/link';
-import { VODAFONE_CASH } from '@/lib/data';
+import Wordmark from './Wordmark';
+import { CATEGORIES } from '@/lib/data';
+import { SITE } from '@/lib/site';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-surface/60 mt-10">
-      <div className="container-p py-8 text-sm text-muted grid gap-6 sm:grid-cols-3">
-        <div>
-          <div className="font-bold text-ink mb-2">🏺 كراكيب وتحف</div>
-          <p className="leading-relaxed">المنصة الأولى في مصر لبيع التحف والمقتنيات النادرة.</p>
+    <footer className="mt-16 border-t border-line bg-surface/50">
+      <div className="container-p grid gap-8 py-12 text-sm sm:grid-cols-4">
+        <div className="sm:col-span-2">
+          <Wordmark />
+          <p className="prose-ar mt-4 max-w-md !text-[14px] !leading-7 text-muted">
+            Vintage سوق إلكتروني مصري متخصص في التحف والأنتيك والمقتنيات النادرة. كل إعلان يمر بمراجعة يدوية قبل النشر، والتواصل مباشر بين البائع والمشتري بدون وسيط.
+          </p>
         </div>
-        <div className="grid gap-2">
-          <Link href="/how-it-works" className="hover:text-ink">كيف يعمل الموقع</Link>
-          <Link href="/pricing" className="hover:text-ink">باقات الإعلانات</Link>
-          <Link href="/contact" className="hover:text-ink">اتصل بنا</Link>
-        </div>
-        <div className="grid gap-2">
-          <Link href="/terms" className="hover:text-ink">الشروط والأحكام</Link>
-          <Link href="/privacy" className="hover:text-ink">سياسة الخصوصية</Link>
-          <span>فودافون كاش: {VODAFONE_CASH}</span>
-        </div>
+        <nav aria-label="الأقسام" className="grid gap-2 text-muted">
+          <span className="eyebrow mb-1">الأقسام</span>
+          {CATEGORIES.slice(0, 5).map((c) => (
+            <Link key={c.slug} href={`/category/${c.slug}`} className="hover:text-gold-light">{c.name}</Link>
+          ))}
+        </nav>
+        <nav aria-label="روابط المنصة" className="grid gap-2 text-muted">
+          <span className="eyebrow mb-1">المنصة</span>
+          <Link href="/how-it-works" className="hover:text-gold-light">كيف يعمل الموقع</Link>
+          <Link href="/pricing" className="hover:text-gold-light">باقات الإعلانات</Link>
+          <Link href="/blog" className="hover:text-gold-light">دليل المقتنيات</Link>
+          <Link href="/contact" className="hover:text-gold-light">اتصل بنا</Link>
+          <Link href="/terms" className="hover:text-gold-light">الشروط والأحكام</Link>
+          <Link href="/privacy" className="hover:text-gold-light">سياسة الخصوصية</Link>
+        </nav>
       </div>
-      <div className="container-p pb-6 text-xs text-muted/70">© {new Date().getFullYear()} كراكيب وتحف — جميع الحقوق محفوظة.</div>
+      <div className="rule" />
+      <div className="container-p flex flex-wrap items-center justify-between gap-2 py-5 text-xs text-muted">
+        <span>© {new Date().getFullYear()} {SITE.name} — جميع الحقوق محفوظة.</span>
+        <span>فودافون كاش للإعلانات: {SITE.phone}</span>
+      </div>
     </footer>
   );
 }

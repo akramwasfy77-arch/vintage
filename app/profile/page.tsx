@@ -22,7 +22,7 @@ export default function Page() {
   }
 
   if (!supabaseReady) return <div className="container-p py-10 text-muted">الحساب يعمل بعد ربط قاعدة البيانات.</div>;
-  if (!user) return <div className="container-p py-10">لازم تسجّل الدخول. <Link href="/login" className="gold">دخول</Link></div>;
+  if (!user) return <div className="container-p py-10">لازم تسجّل الدخول. <Link href="/login" className="link-gold">دخول</Link></div>;
 
   return (
     <div className="container-p py-8 max-w-md">
@@ -31,7 +31,7 @@ export default function Page() {
         <div><label className="label">البريد</label><input disabled className="input opacity-60" value={user.email} /></div>
         <div><label className="label">الاسم</label><input className="input" value={f.full_name} onChange={(e) => setF({ ...f, full_name: e.target.value })} /></div>
         <div><label className="label">الموبايل</label><input className="input" value={f.phone} onChange={(e) => setF({ ...f, phone: e.target.value })} /></div>
-        <button className="btn-primary" onClick={save}>حفظ</button>
+        <button className="btn-gold" onClick={save}>حفظ</button>
         {msg && <p className="text-sm text-muted">{msg}</p>}
         <button className="btn-ghost" onClick={async () => { await supabase.auth.signOut(); window.location.href = '/'; }}>تسجيل الخروج</button>
       </div>

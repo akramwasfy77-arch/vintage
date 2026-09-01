@@ -1,19 +1,29 @@
-# كراكيب وتحف
+# Vintage — سوق التحف والمقتنيات النادرة في مصر
 
-المنصة الأولى في مصر لبيع التحف والمقتنيات النادرة.
+منصة إعلانات مبوّبة عربية (RTL) متخصصة في التحف والأنتيك والمقتنيات النادرة، مبنية للفهرسة في محركات البحث ومساعدات الذكاء الاصطناعي.
 
-## Stack
-- Next.js 14 (App Router, static export) + Tailwind CSS, Arabic RTL
-- Supabase: Auth + Postgres + Storage + RLS
-- Cloudflare Pages (auto-deploy from `main`)
+## التقنيات
+- **Next.js 14 App Router** — SSR / SSG / ISR. كل المحتوى الأساسي يُرسَل في الـ HTML الأولي بدون اعتماد على JavaScript في المتصفح.
+- **Tailwind CSS** — هوية بصرية داكنة فاخرة (أسود عميق + ذهب مصقول).
+- **Supabase** — Auth + Postgres + Storage + RLS.
+- **الخطوط** — Cairo (عربي) و Playfair Display (لاتيني) عبر `next/font` بتحميل ذاتي (self-hosted) بدون طلبات لجهات خارجية.
 
-## Setup
-1. Create a Supabase project, run `supabase/schema.sql` in the SQL editor.
-2. Set env vars in Cloudflare Pages:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-3. Build command: `npm run build` — output directory: `out`.
+## النشر
+Push على فرع `main` فقط — المستودع مربوط بـ Vercel و Railway والنشر تلقائي. لا يُستخدم Cloudflare Pages.
 
-Admin: sign up with `akramwasfy77@gmail.com`, the DB trigger grants the admin role; login at `/admin`.
+## متغيرات البيئة
+| المتغير | الوصف |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | رابط مشروع Supabase |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | المفتاح العام (anon) |
+| `NEXT_PUBLIC_SITE_URL` | نطاق الموقع النهائي — يُستخدم في canonical و sitemap و OG |
 
-Payments: manual Vodafone Cash (01029397797) verification from the admin panel.
+بدون هذه المتغيرات يعمل الموقع ببيانات نماذج توضيحية.
+
+## قاعدة البيانات
+شغّل `supabase/schema.sql` في SQL Editor: يُنشئ جدولي `users` و `ads`، سياسات RLS، تريجر إنشاء الملف الشخصي ومنح صلاحية الأدمن، دوال العداد وانتهاء الصلاحية، و bucket الصور.
+
+الأدمن: سجّل بـ `akramwasfy77@gmail.com` من `/signup`، ثم الدخول من `/admin`.
+
+## بنية SEO / AEO
+انظر `docs/SEO.md`.

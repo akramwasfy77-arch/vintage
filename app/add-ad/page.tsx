@@ -61,7 +61,7 @@ export default function Page() {
       <div className="text-5xl">✅</div>
       <h1 className="h1 mt-3">تم استلام إعلانك</h1>
       <p className="text-muted mt-2">هنراجع تحويل فودافون كاش وننشر الإعلان خلال ساعات. تقدر تتابع الحالة من "إعلاناتي".</p>
-      <Link href="/my-ads" className="btn-primary mt-5">إعلاناتي</Link>
+      <Link href="/my-ads" className="btn-gold mt-5">إعلاناتي</Link>
     </div>
   );
 
@@ -72,11 +72,11 @@ export default function Page() {
       <h1 className="h1">أضف إعلان</h1>
       <div className="flex gap-2 my-4">
         {steps.map((s, i) => (
-          <div key={s} className={`flex-1 text-center text-xs py-2 rounded-lg border ${step === i + 1 ? 'border-primary text-primary' : step > i + 1 ? 'border-line text-muted' : 'border-line text-muted/50'}`}>{i + 1}. {s}</div>
+          <div key={s} className={`flex-1 text-center text-xs py-2 rounded-lg border ${step === i + 1 ? 'border-gold text-gold-light' : step > i + 1 ? 'border-line text-muted' : 'border-line text-muted/50'}`}>{i + 1}. {s}</div>
         ))}
       </div>
 
-      {!user && supabaseReady && <p className="card p-3 text-sm text-muted mb-3">لازم تسجّل الدخول قبل النشر. <Link href="/login" className="gold">دخول</Link></p>}
+      {!user && supabaseReady && <p className="card p-3 text-sm text-muted mb-3">لازم تسجّل الدخول قبل النشر. <Link href="/login" className="link-gold">دخول</Link></p>}
 
       <div className="card p-5 grid gap-3">
         {step === 1 && (<>
@@ -114,9 +114,9 @@ export default function Page() {
         {step === 3 && (
           <div className="grid sm:grid-cols-2 gap-3">
             {PACKAGES.map((p) => (
-              <button key={p.id} onClick={() => setF({ ...f, package: p.id })} className={`text-start card p-4 ${f.package === p.id ? 'ring-2 ring-primary' : ''}`}>
+              <button key={p.id} onClick={() => setF({ ...f, package: p.id })} className={`text-start card p-4 ${f.package === p.id ? 'ring-2 ring-gold' : ''}`}>
                 <div className="font-bold">{p.name}</div>
-                <div className="gold font-bold">{egp(p.price)}</div>
+                <div className="text-gold-light font-bold">{egp(p.price)}</div>
                 <div className="text-xs text-muted">{p.days} يوم</div>
                 <ul className="mt-2 text-xs text-muted grid gap-1">{p.perks.map((x) => <li key={x}>✓ {x}</li>)}</ul>
               </button>
@@ -125,9 +125,9 @@ export default function Page() {
         )}
 
         {step === 4 && (<>
-          <div className="rounded-xl bg-primary/10 border border-primary/40 p-4 text-center">
+          <div className="rounded-xl bg-gold/10 border border-gold/40 p-4 text-center">
             <div className="text-sm text-muted">المطلوب تحويله</div>
-            <div className="text-2xl font-bold gold">{egp(pkg.price)}</div>
+            <div className="text-2xl font-bold text-gold-light">{egp(pkg.price)}</div>
             <div className="mt-2 text-sm">حوّل {pkg.price} جنيه على فودافون كاش:</div>
             <div className="text-xl font-bold tracking-wider mt-1">{VODAFONE_CASH}</div>
           </div>
@@ -140,8 +140,8 @@ export default function Page() {
         <div className="flex gap-2 pt-2">
           {step > 1 && <button className="btn-ghost flex-1" onClick={() => setStep(step - 1)}>السابق</button>}
           {step < 4
-            ? <button className="btn-primary flex-1" onClick={() => setStep(step + 1)}>التالي</button>
-            : <button disabled={busy || !f.vodafone_transaction_id} className="btn-primary flex-1" onClick={submit}>{busy ? 'جارٍ الإرسال…' : 'إرسال الإعلان'}</button>}
+            ? <button className="btn-gold flex-1" onClick={() => setStep(step + 1)}>التالي</button>
+            : <button disabled={busy || !f.vodafone_transaction_id} className="btn-gold flex-1" onClick={submit}>{busy ? 'جارٍ الإرسال…' : 'إرسال الإعلان'}</button>}
         </div>
       </div>
     </div>

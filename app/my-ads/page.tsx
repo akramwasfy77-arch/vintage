@@ -22,7 +22,7 @@ export default function Page() {
   }, []);
 
   if (loading) return <div className="container-p py-10 text-muted">جارٍ التحميل…</div>;
-  if (!user) return <div className="container-p py-10">لازم تسجّل الدخول. <Link href="/login" className="gold">دخول</Link></div>;
+  if (!user) return <div className="container-p py-10">لازم تسجّل الدخول. <Link href="/login" className="link-gold">دخول</Link></div>;
 
   return (
     <div className="container-p py-6">
@@ -30,7 +30,7 @@ export default function Page() {
         <h1 className="h1">إعلاناتي</h1>
         <div className="flex gap-2">
           <Link href="/profile" className="btn-ghost !py-2 !px-3 text-sm">حسابي</Link>
-          <Link href="/add-ad" className="btn-primary !py-2 !px-3 text-sm">إعلان جديد</Link>
+          <Link href="/add-ad" className="btn-gold !py-2 !px-3 text-sm">إعلان جديد</Link>
         </div>
       </div>
       <div className="grid gap-3 mt-4">
@@ -41,7 +41,7 @@ export default function Page() {
             </div>
             <div className="min-w-0 flex-1">
               <div className="font-semibold truncate">{a.title}</div>
-              <div className="text-sm gold">{egp(a.price_egp)}</div>
+              <div className="text-sm text-gold-light">{egp(a.price_egp)}</div>
               <div className="text-xs text-muted mt-1">{pkgById(a.package)?.name} · عملية {a.vodafone_transaction_id}</div>
               {a.rejection_reason && <div className="text-xs text-red-400 mt-1">سبب الرفض: {a.rejection_reason}</div>}
             </div>

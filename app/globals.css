@@ -1,25 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root { color-scheme: dark; }
-html, body { background: #0F0F14; color: #F5F5F0; }
-body { font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
-::selection { background: #D9770655; }
+html { scroll-behavior: smooth; }
+body {
+  background: #0B0B0F;
+  color: #F7F5EF;
+  background-image:
+    radial-gradient(80% 50% at 50% -10%, rgba(201,162,39,.10), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.022'/%3E%3C/svg%3E");
+  -webkit-tap-highlight-color: transparent;
+}
+::selection { background: rgba(201,162,39,.35); }
+h1, h2, h3, .font-display { font-family: var(--font-display), Georgia, serif; letter-spacing: -.01em; }
 
 @layer components {
-  .card { @apply bg-surface border border-line rounded-2xl; }
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition active:scale-[.98]; }
-  .btn-primary { @apply btn bg-primary text-black hover:bg-primaryDark hover:text-white; }
-  .btn-ghost { @apply btn border border-line text-ink hover:border-primary; }
-  .btn-secondary { @apply btn bg-secondary text-white hover:opacity-90; }
-  .input { @apply w-full bg-surface2 border border-line rounded-xl px-4 py-3 text-[15px] outline-none focus:border-primary placeholder:text-muted/70; }
-  .label { @apply block text-sm text-muted mb-2; }
-  .chip { @apply inline-flex items-center gap-1 rounded-full border border-line bg-surface2 px-3 py-1.5 text-xs; }
   .container-p { @apply mx-auto w-full max-w-6xl px-4; }
-  .h1 { @apply text-2xl sm:text-3xl font-bold; }
-  .gold { @apply text-primary; }
+  .card {
+    @apply rounded-2xl border border-line bg-surface/80 shadow-inset backdrop-blur-sm;
+  }
+  .card-lux { @apply card relative overflow-hidden; }
+  .card-lux::before {
+    content: ''; position: absolute; inset-inline: 0; top: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,162,39,.6), transparent);
+  }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all active:scale-[.98]; }
+  .btn-gold { @apply btn text-black; background-image: linear-gradient(135deg,#E7C766,#C9A227 55%,#A5811A); box-shadow: 0 8px 24px -8px rgba(201,162,39,.55); }
+  .btn-gold:hover { filter: brightness(1.07); }
+  .btn-outline { @apply btn border border-gold/40 text-gold-light hover:border-gold hover:bg-gold/10; }
+  .btn-ghost { @apply btn border border-line text-ink hover:border-gold/50; }
+  .input { @apply w-full rounded-xl border border-line bg-surface2/80 px-4 py-3 text-[15px] outline-none transition focus:border-gold/60 focus:ring-1 focus:ring-gold/25 placeholder:text-muted/60; }
+  .label { @apply mb-2 block text-xs uppercase tracking-widest text-muted; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface2/70 px-3 py-1.5 text-xs text-ink/90; }
+  .chip-gold { @apply chip border-gold/45 text-gold-light; }
+  .rule { @apply h-px w-full bg-goldline opacity-50; }
+  .eyebrow { @apply text-[11px] uppercase tracking-[.3em] text-gold/80; }
+  .h1 { @apply text-3xl sm:text-4xl font-bold leading-tight; }
+  .h2 { @apply text-xl sm:text-2xl font-bold; }
+  .prose-ar { @apply text-[15.5px] leading-8 text-ink/85; }
+  .link-gold { @apply text-gold-light underline-offset-4 hover:underline; }
 }
 .scroll-x { scrollbar-width: none; }
 .scroll-x::-webkit-scrollbar { display: none; }
+.frame-gold { position: relative; }
+.frame-gold::after {
+  content: ''; position: absolute; inset: 6px; border: 1px solid rgba(201,162,39,.28);
+  border-radius: 12px; pointer-events: none;
+}

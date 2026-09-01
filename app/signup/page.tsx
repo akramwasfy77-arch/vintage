@@ -29,9 +29,9 @@ export default function Page() {
         <div><label className="label">البريد الإلكتروني</label><input required type="email" className="input" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} /></div>
         <div><label className="label">رقم الموبايل</label><input required inputMode="tel" className="input" placeholder="01xxxxxxxxx" value={f.phone} onChange={(e) => setF({ ...f, phone: e.target.value })} /></div>
         <div><label className="label">كلمة المرور</label><input required type="password" minLength={6} className="input" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} /></div>
-        <button disabled={busy} className="btn-primary">{busy ? '...' : 'إنشاء الحساب'}</button>
+        <button disabled={busy} className="btn-gold">{busy ? '...' : 'إنشاء الحساب'}</button>
         {msg && <p className="text-sm text-muted">{msg}</p>}
-        <p className="text-sm text-muted">عندك حساب؟ <Link href="/login" className="gold">سجّل الدخول</Link></p>
+        <p className="text-sm text-muted">عندك حساب؟ <Link href="/login" className="link-gold">سجّل الدخول</Link></p>
       </form>
     </div>
   );

@@ -24,9 +24,9 @@ export default function Page() {
       <form onSubmit={submit} className="card p-5 mt-4 grid gap-3">
         <div><label className="label">البريد الإلكتروني</label><input required type="email" className="input" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} /></div>
         <div><label className="label">كلمة المرور</label><input required type="password" className="input" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} /></div>
-        <button disabled={busy} className="btn-primary">{busy ? '...' : 'دخول'}</button>
+        <button disabled={busy} className="btn-gold">{busy ? '...' : 'دخول'}</button>
         {msg && <p className="text-sm text-red-400">{msg}</p>}
-        <p className="text-sm text-muted">مستخدم جديد؟ <Link href="/signup" className="gold">أنشئ حساب</Link></p>
+        <p className="text-sm text-muted">مستخدم جديد؟ <Link href="/signup" className="link-gold">أنشئ حساب</Link></p>
       </form>
     </div>
   );

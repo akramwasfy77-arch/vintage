@@ -4,18 +4,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#0F0F14',
-        surface: '#1A1A22',
-        surface2: '#23232E',
-        ink: '#F5F5F0',
-        muted: '#9C9CAB',
-        primary: '#D97706',
-        primaryDark: '#B45309',
-        secondary: '#8B5CF6',
-        line: '#2C2C38',
+        bg: '#0B0B0F',
+        surface: '#141419',
+        surface2: '#1C1C24',
+        ink: '#F7F5EF',
+        muted: '#9A968C',
+        gold: { DEFAULT: '#C9A227', light: '#E7C766', dark: '#8C6D12' },
+        wine: '#5B1A2B',
+        line: '#2A2A33',
       },
-      fontFamily: { sans: ['"IBM Plex Sans Arabic"', 'system-ui', 'sans-serif'] },
-      borderRadius: { xl2: '1.25rem' },
+      fontFamily: {
+        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
+      },
+      boxShadow: {
+        lux: '0 20px 60px -20px rgba(201,162,39,.25)',
+        inset: 'inset 0 1px 0 rgba(255,255,255,.05)',
+      },
+      backgroundImage: {
+        goldline: 'linear-gradient(90deg,transparent,#C9A227,transparent)',
+        goldfill: 'linear-gradient(135deg,#E7C766 0%,#C9A227 45%,#8C6D12 100%)',
+      },
     },
   },
   plugins: [],

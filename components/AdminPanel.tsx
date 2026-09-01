@@ -54,7 +54,7 @@ export default function AdminPanel({ tab }: { tab: string }) {
 
   if (!ready) return <div className="container-p py-10 text-muted">جارٍ التحميل…</div>;
   if (!supabaseReady) return <div className="container-p py-10 text-muted">لوحة الإدارة تعمل بعد ربط قاعدة البيانات.</div>;
-  if (!user) return <div className="container-p py-10">سجّل الدخول أولاً. <Link href="/admin" className="gold">دخول الإدارة</Link></div>;
+  if (!user) return <div className="container-p py-10">سجّل الدخول أولاً. <Link href="/admin" className="link-gold">دخول الإدارة</Link></div>;
   if (user.email !== ADMIN_EMAIL) return <div className="container-p py-10 text-red-400">هذا الحساب ليس لديه صلاحية إدارة.</div>;
 
   const pending = ads.filter((a) => a.status === 'pending');
@@ -70,7 +70,7 @@ export default function AdminPanel({ tab }: { tab: string }) {
         </div>
         <div className="min-w-0 flex-1">
           <div className="font-semibold">{a.title}</div>
-          <div className="text-sm gold">{egp(a.price_egp)} · {catName(a.category)}</div>
+          <div className="text-sm text-gold-light">{egp(a.price_egp)} · {catName(a.category)}</div>
           <div className="text-xs text-muted mt-1">{pkgById(a.package)?.name} ({egp(a.package_price_egp)}) · فودافون كاش: <span className="text-ink font-mono">{a.vodafone_transaction_id}</span></div>
           <div className="text-xs text-muted">{a.seller_phone} · {a.location}</div>
         </div>
@@ -78,7 +78,7 @@ export default function AdminPanel({ tab }: { tab: string }) {
       </div>
       {actions && (
         <div className="flex gap-2">
-          <button className="btn-primary flex-1 !py-2 text-sm" onClick={() => decide(a.id, true)}>موافقة</button>
+          <button className="btn-gold flex-1 !py-2 text-sm" onClick={() => decide(a.id, true)}>موافقة</button>
           <button className="btn-ghost flex-1 !py-2 text-sm" onClick={() => decide(a.id, false)}>رفض</button>
         </div>
       )}
@@ -92,14 +92,14 @@ export default function AdminPanel({ tab }: { tab: string }) {
         <button className="btn-ghost !py-2 !px-3 text-sm" onClick={async () => { await supabase.auth.signOut(); window.location.href = '/admin'; }}>خروج</button>
       </div>
       <div className="flex gap-2 overflow-x-auto scroll-x my-4">
-        {TABS.map((t) => <Link key={t.id} href={t.href} className={`chip whitespace-nowrap ${tab === t.id ? '!border-primary text-primary' : ''}`}>{t.name}</Link>)}
+        {TABS.map((t) => <Link key={t.id} href={t.href} className={`chip whitespace-nowrap ${tab === t.id ? '!border-gold text-gold-light' : ''}`}>{t.name}</Link>)}
       </div>
-      {note && <p className="text-sm gold mb-3">{note}</p>}
+      {note && <p className="text-sm text-gold-light mb-3">{note}</p>}
 
       {tab === 'dashboard' && (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[['إعلانات معلّقة', pending.length], ['إعلانات منشورة', approved.length], ['المستخدمون', users.length], ['الإيرادات المحصّلة', egp(revenue)]].map(([k, v]) => (
-            <div key={k as string} className="card p-4"><div className="text-xs text-muted">{k}</div><div className="text-2xl font-bold gold mt-1">{v as any}</div></div>
+            <div key={k as string} className="card p-4"><div className="text-xs text-muted">{k}</div><div className="text-2xl font-bold text-gold-light mt-1">{v as any}</div></div>
           ))}
         </div>
       )}
@@ -123,7 +123,7 @@ export default function AdminPanel({ tab }: { tab: string }) {
           {ads.map((a) => (
             <div key={a.id} className="card p-3 text-sm flex justify-between items-center gap-3">
               <div className="min-w-0"><div className="truncate">{a.title}</div><div className="text-xs text-muted font-mono">{a.vodafone_transaction_id}</div></div>
-              <div className="text-end shrink-0"><div className="gold font-bold">{egp(a.package_price_egp)}</div><StatusBadge status={a.status} /></div>
+              <div className="text-end shrink-0"><div className="text-gold-light font-bold">{egp(a.package_price_egp)}</div><StatusBadge status={a.status} /></div>
             </div>
           ))}
         </div>
@@ -131,7 +131,7 @@ export default function AdminPanel({ tab }: { tab: string }) {
 
       {tab === 'revenue' && (
         <div className="grid gap-3 sm:grid-cols-3">
-          <div className="card p-4"><div className="text-xs text-muted">محصّل (معتمد)</div><div className="text-2xl font-bold gold">{egp(revenue)}</div></div>
+          <div className="card p-4"><div className="text-xs text-muted">محصّل (معتمد)</div><div className="text-2xl font-bold text-gold-light">{egp(revenue)}</div></div>
           <div className="card p-4"><div className="text-xs text-muted">قيد التحقق</div><div className="text-2xl font-bold">{egp(pendingRevenue)}</div></div>
           <div className="card p-4"><div className="text-xs text-muted">متوسط قيمة الإعلان</div><div className="text-2xl font-bold">{egp(approved.length ? revenue / approved.length : 0)}</div></div>
         </div>
